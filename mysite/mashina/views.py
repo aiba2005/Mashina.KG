@@ -115,7 +115,7 @@ class CarListAPIView(generics.ListAPIView):
     serializer_class = CarListSerializer
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     filters_class = [CarFilter]
-    ordering_fields = ['price']
+    ordering_fields = ['price', 'year']
 
 
 class CarCreateAPIView(generics.CreateAPIView):

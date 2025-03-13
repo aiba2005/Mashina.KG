@@ -65,14 +65,25 @@ class Color(models.Model):
     color_name = models.CharField(max_length=34)
     color_image = models.FileField(upload_to='color_images/')
 
+    def __str__(self):
+        return f'{self.color_name}'
+
 
 class CarMake(models.Model):
     make_name = models.CharField(max_length=34,unique=True)
+
+    def __str__(self):
+        return f'{self.make_name}'
+
 
 
 class CarModel(models.Model):
     model_name = models.CharField(max_length=34, unique=True)
     car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE, related_name='model_car')
+
+    def __str__(self):
+        return f'{self.model_name}'
+
 
 
 class Car(models.Model):
@@ -123,6 +134,8 @@ class Car(models.Model):
     fuel = models.CharField(max_length=34, choices=FUEL_CHOICES, verbose_name='топливо')
     price = models.DecimalField(max_digits=8, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
+
+
 
 
     def clean(self):
